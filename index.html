@@ -14,11 +14,11 @@
 
 </head>
 
-<body class="container">
+<body class=" bg-light">
     <header>
         <!-- Navbar Start  -->
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg bg-white ">
+            <div class=" container-fluid">
                 <a class="navbar-brand fw-bold" href="#" style="font-size:30px;"><span
                         class="text-bg-primary rounded">News</span><span class="text-primary"> Flex</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -31,11 +31,13 @@
                             <a class="nav-link active" aria-current="page" href="#">News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
+                            <a class="nav-link" href="#" data-bs-toggle="modal"
+                                data-bs-target="#blogDetailModal">Blog</a>
                         </li>
                         <li>
-                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle"
-                                height="25" alt="Black and White Portrait of a Man" loading="lazy" />
+                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                                class="rounded-circle align-items-center" height="40"
+                                alt="Black and White Portrait of a Man" loading="lazy" />
                         </li>
                     </ul>
                 </div>
@@ -44,7 +46,8 @@
         </nav>
         <!-- navbar end  -->
         <!-- tab plugin start -->
-        <ul class="nav nav-pills my-3 justify-content-center" id="pills-tab" role="tablist">
+        <ul class="container nav nav-pills my-3 justify-content-center bg-white rounded-5" id="pills-tab"
+            role="tablist">
             <!-- Dynamic data -->
         </ul>
         <hr>
@@ -52,14 +55,14 @@
     </header>
     <main>
         <section>
-            <nav class="navbar bg-light">
+            <nav class="container navbar bg-light ">
                 <div class="container-fluid ">
                     <h5> <span id="items-found">3</span> items found for category <span id="found-category">All
                             News</span></h5>
                 </div>
             </nav>
         </section>
-        <section class="d-flex justify-content-between my-3 ">
+        <section class="container d-flex justify-content-between my-3 ">
             <div
                 class="dropdown my-3 d-flex align-items-center justify-content-center flex-md-row  flex-sm-column flex-column">
                 <div>
@@ -70,6 +73,7 @@
                     Default
                 </button>
                 <ul class="dropdown-menu dropdown-menu-d">
+                    <li><a class="dropdown-item " onclick="shotingcard(5)" id="accending" href="#">View Count</a></li>
                     <li><a class="dropdown-item " onclick="shotingcard(true)" id="accending" href="#">Accending</a></li>
                     <li><a class="dropdown-item" onclick="shotingcard(false)" id="decending" href="#">Decending</a></li>
 
@@ -83,7 +87,7 @@
         </section>
         <section>
             <!-- spiner -->
-            <section id="loader" class="d-none">
+            <section id="loader" class="d-none container">
                 <div class="text-center">
                     <div style="height:400px;" class="d-flex  justify-content-center align-items-center">
                         <div class="spinner-border text-success" role="status">
@@ -94,7 +98,7 @@
             </section>
         </section>
         <!-- Card sction start  -->
-        <section id="news-container">
+        <section class="container" id="news-container">
 
         </section>
         <div id="no-found-messege" class="d-none">
@@ -120,10 +124,116 @@
                 </div>
             </div>
         </section>
+        <section>
+            <!-- Modal ---------------------------->
+            <div class="modal fade" id="blogDetailModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="newsDetailModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Blogs</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="news-details" class="modal-body">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            Diffrence between var, Let, Const.
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            The differences between var, let, and const variable declaration in
+                                            JavaScript include:
+                                            Variables declared with var and const are scoped to the immediate function
+                                            body.
+                                            Variables declared with the var keyword are hoisted. Hoisting means that the
+                                            variable can be accessed in their enclosing scope even before they are
+                                            declared.
+                                            Variables declared with the let keyword are block-scoped, which means the
+                                            variables will have scope to the immediate enclosing block.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                            Diffrence between arrow function and regular function.
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Unlike regular functions, arrow functions do not have their own this
+                                            . The value of this inside an arrow function remains the same throughout
+                                            the lifecycle of the function and is always bound to the value of this
+                                            in the closest non-arrow parent function.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                            Diffrence Map, foreach ,Filter, Find .
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            .forEach(), is used to execute the same code on every element in an array
+                                            but does not change the array and it returns undefined.
+                                            .map() executes the same code on every element in an array and returns a new
+                                            array with the updated elements.
+                                            .filter() checks every element in an array to see if it meets a certain
+                                            criteria and returns a new array with the elements that return truthy for
+                                            the criteria.
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingfour">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapsefour"
+                                            aria-expanded="false" aria-controls="collapsefour">
+                                            Why does templet string use?
+                                        </button>
+                                    </h2>
+                                    <div id="collapsefour" class="accordion-collapse collapse"
+                                        aria-labelledby="headingfour" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Template literals are sometimes informally called template strings, because
+                                            they are used most commonly for string interpolation (to create strings by
+                                            doing substitution of placeholders). However, a tagged template literal may
+                                            not result in a string; it can be used with a custom tag function to perform
+                                            whatever operations you want on the different parts of the template literal.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
     <footer>
-        <p>Copyright 2021 News Portal</p>
+        <p style="margin-top:200px; padding-top:100px; padding-bottom:50px;" class="text-center bg-white text-black">
+            Copyright 2021
+            News
+            Portal</p>
     </footer>
     <script src="js/app.js"></script>
     <!-- Bootstrap JavaScript Libraries -->

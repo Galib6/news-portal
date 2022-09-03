@@ -70,6 +70,12 @@ const shotingcard = (value) => {
         });
 
     }
+    else if (value === 5) {
+        array.sort((a, b) => {
+            return b.total_view - a.total_view;
+        });
+
+    }
     else {
         array.sort(function (a, b) {
             if (a.title.toLowerCase() > b.title.toLowerCase()) return -1;
@@ -77,6 +83,7 @@ const shotingcard = (value) => {
             return 0;
         });
     }
+
 
     addingNewsCard(array);
 }
@@ -90,7 +97,7 @@ const addingNewsCard = (arrayValue) => {
         const newsDiv = document.createElement("div");
         newsDiv.innerHTML = `
         
-        <div class="card mb-3">
+        <div class="card mb-3 shadow p-3 mb-5 bg-white rounded border-0" onclick="loadNewsDetails('${newsCard._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailModal">
                     <div class="row g-0">
                         <div class="col-md-3">
                             <img src="${newsCard.thumbnail_url}" class="img-fluid rounded-start w-100" alt="...">
@@ -104,7 +111,7 @@ const addingNewsCard = (arrayValue) => {
                                     <div class="col ">
                                         <div class="d-flex ">
                                             <div>
-                                                <img src="${newsCard.author.img}" style="width: 40px;
+                                                <img src="${newsCard.author.img ? newsCard.author.img : "image not found"}" style="width: 40px;
                                                 height: 40px; border-radius: 155px;" alt="">
                                             </div>
                                             <div class="d-flex flex-column ms-2 align-self-baseline">
@@ -150,7 +157,7 @@ const addingNewsCard = (arrayValue) => {
 
 const loadNewsDetails = async (id) => {
     const url = `https://openapi.programming-hero.com/api/news/${id}`
-    console.log(url);
+    // console.log(url);
     const res = await fetch(url)
     const data = await res.json();
     // console.log(data.data[0]);
@@ -158,16 +165,18 @@ const loadNewsDetails = async (id) => {
 }
 
 const displayNewsDetails = (newsInfo) => {
-    console.log(newsInfo);
+    // console.log(newsInfo);
     const modalTitle = document.getElementById("newsDetailModalLabel");
     modalTitle.innerText = newsInfo.title;
     const newsDetails = document.getElementById('news-details');
     // console.log(newsDetails)
     newsDetails.innerHTML = `
+    
         <small>Published date:${newsInfo.author.published_date}</small>
-        <img class="img-fluid" src="${newsInfo.image_url}" alt="">
+        <br>
+        <img class="img-fluid w-100 py-3" src="${newsInfo.image_url}" alt="">
         <p>${newsInfo.details}</p>
-        <p class="Text-primary">Total View : ${newsInfo.total_view ? newsInfo.total_view : "Confidential"}</p>
+        <p class="Text-primary py-3">Total View : ${newsInfo.total_view ? newsInfo.total_view : "Confidential"}</p>
     `
 }
 
