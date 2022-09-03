@@ -1,3 +1,4 @@
+let array = [];
 const catagory = async () => {
     const url = "https://openapi.programming-hero.com/api/news/categories";
     const res = await fetch(url);
@@ -20,6 +21,7 @@ const catagory = async () => {
 
 catagory();
 
+
 const clickHandler = async (categoryId) => {
     toggleSpinner(true);
     const url = ` https://openapi.programming-hero.com/api/news/category/0${categoryId}`
@@ -29,9 +31,6 @@ const clickHandler = async (categoryId) => {
     console.log(newsPortalData)
     const newsPortal = newsPortalData.data;
     console.log(newsPortal);
-
-    const allNewsContainer = document.getElementById('news-container')
-    allNewsContainer.textContent = '';
 
     const itemFound = document.getElementById('items-found')
     // console.log(itemFound)
@@ -46,14 +45,44 @@ const clickHandler = async (categoryId) => {
     else {
         noNews.classList.add('d-none');
     }
+    addingNewsCard(newsPortal);
+    array = [];
+    newsPortal.forEach(news => {
+        array.push(news);
+        console.log(array)
+    })
 
+};
+// short by 
+const shotingcard = (value) => {
+    if (value === true) {
+        array.sort(function (a, b) {
+            if (a.title.toLowerCase() < b.title.toLowerCase()) {
+                return -1;
+            }
+            if (a.title.toLowerCase() > b.title.toLowerCase()) { return 1; }
+            return 0;
+        });
 
+    }
+    else {
+        array.sort(function (a, b) {
+            if (a.title.toLowerCase() > b.title.toLowerCase()) return -1;
+            if (a.title.toLowerCase() < b.title.toLowerCase()) return 1;
+            return 0;
+        });
+    }
 
-    newsPortal.forEach(newsCard => {
+    addingNewsCard(array);
+}
+
+const addingNewsCard = (arrayValue) => {
+    const allNewsContainer = document.getElementById('news-container')
+    allNewsContainer.textContent = '';
+
+    arrayValue.forEach(newsCard => {
         console.log(newsCard)
         const newsDiv = document.createElement("div");
-
-
         newsDiv.innerHTML = `
         
         <div class="card mb-3">
@@ -146,3 +175,5 @@ const toggleSpinner = isloading => {
         loaderSection.classList.add('d-none')
     }
 }
+clickHandler(8);
+
