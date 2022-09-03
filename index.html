@@ -52,8 +52,8 @@
     <main>
         <section>
             <nav class="navbar bg-light">
-                <div class="container-fluid">
-                    <h5>4 items found for category Entertainment</h5>
+                <div class="container-fluid ">
+                    <h5> <span id="items-found">3</span> items found for category Entertainment</h5>
                 </div>
             </nav>
         </section>
@@ -78,56 +78,25 @@
         </section>
         <!-- Card sction start  -->
         <section id="news-container">
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            <div class="row  row-cols-2  row-cols-md-4">
-                                <div class="col ">
-                                    <div class="d-flex ">
-                                        <div>
-                                            <img src="images/student/student-5.png" alt="">
-                                        </div>
-                                        <div class="d-flex flex-column ms-2 align-self-baseline">
-                                            <p class="m-0 fw-bold">
-                                                Awlad Hossain
-                                            </p>
-                                            <p class="m-0">
-                                                UI Designer
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col ">
-                                    <div class=" d-flex justify-content-center mt-3">
-                                        <p><i class="fa-solid fa-eye"></i><span>1.5M</span>
-                                        <p>
-                                    </div>
-                                </div>
-                                <div class="col  mt-3">
-                                    <p>
-                                        <i class="fa-solid fa-star-half-stroke"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                    </p>
-                                </div>
-                                <div class="col ms-auto d-flex justify-content-center mt-3">
-                                    <p><i class="fa-solid fa-arrow-right"></i></p>
-                                </div>
-                            </div>
-                        </div>
 
+        </section>
+
+        <section>
+            <!-- Modal ---------------------------->
+            <div class="modal fade" id="newsDetailModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="newsDetailModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="newsDetailModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="news-details" class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
