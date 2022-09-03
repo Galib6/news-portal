@@ -21,6 +21,7 @@ const catagory = async () => {
 catagory();
 
 const clickHandler = async (categoryId) => {
+    toggleSpinner(true);
     const url = ` https://openapi.programming-hero.com/api/news/category/0${categoryId}`
     // console.log(url);
     const res = await fetch(url);
@@ -32,20 +33,33 @@ const clickHandler = async (categoryId) => {
     const allNewsContainer = document.getElementById('news-container')
     allNewsContainer.textContent = '';
 
+    const itemFound = document.getElementById('items-found')
+    // console.log(itemFound)
+    itemFound.innerText = newsPortal.length;
+    console.log(newsPortal.length)
+
+    const noNews = document.getElementById('no-found-messege')
+    if (newsPortal.length === 0) {
+        toggleSpinner(false);
+        noNews.classList.remove('d-none');
+    }
+    else {
+        noNews.classList.add('d-none');
+    }
+
+
 
     newsPortal.forEach(newsCard => {
-        // console.log(newsCard)
+        console.log(newsCard)
         const newsDiv = document.createElement("div");
-        const itemFound = document.getElementById('items-found')
-        // console.log(itemFound)
-        const newsId = newsCard._id;
-        itemFound.innerText = newsPortal.length;
+
+
         newsDiv.innerHTML = `
         
         <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-3">
-                            <img src="${newsCard.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+                            <img src="${newsCard.thumbnail_url}" class="img-fluid rounded-start w-100" alt="...">
                         </div>
                         <div class="col-md-9">
                             <div class="card-body mt-4">
@@ -61,10 +75,10 @@ const clickHandler = async (categoryId) => {
                                             </div>
                                             <div class="d-flex flex-column ms-2 align-self-baseline">
                                                 <p class="m-0 fw-bold">
-                                                ${newsCard.author.name}
+                                                ${newsCard.author.name ? newsCard.author.name : "confidential"}
                                                 </p>
                                                 <p class="m-0">
-                                                <small class="text-muted">${newsCard.author.published_date.slice(6, 16)}</small>
+                                                <small class="text-muted">${newsCard.author.published_date}</small>
                                                 </p>
                                             </div>
                                         </div>
@@ -94,8 +108,8 @@ const clickHandler = async (categoryId) => {
                 </div>
         
         `
-        allNewsContainer.appendChild(newsDiv)
-
+        allNewsContainer.appendChild(newsDiv);
+        toggleSpinner(false);
     })
 }
 
@@ -118,8 +132,17 @@ const displayNewsDetails = (newsInfo) => {
     newsDetails.innerHTML = `
         <small>Published date:${newsInfo.author.published_date}</small>
         <img class="img-fluid" src="${newsInfo.image_url}" alt="">
-        <p></p>
-        <p></p>
+        <p>${newsInfo.details}</p>
+        <p class="Text-primary">Total View : ${newsInfo.total_view ? newsInfo.total_view : "Confidential"}</p>
     `
 }
 
+const toggleSpinner = isloading => {
+    const loaderSection = document.getElementById('loader');
+    if (isloading) {
+        loaderSection.classList.remove("d-none");
+    }
+    else {
+        loaderSection.classList.add('d-none')
+    }
+}
