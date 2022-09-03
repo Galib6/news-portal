@@ -97,7 +97,7 @@ const addingNewsCard = (arrayValue) => {
                         </div>
                         <div class="col-md-9">
                             <div class="card-body mt-4">
-                                <h5 class="card-title">${newsCard.title}</h5>
+                                <h3 class="card-title">${newsCard.title}</h3>
                                 <p class="card-text">${newsCard.details.slice(0, 300)}...</p>
                                 <p class="card-text">This may be provided through many different media: word of mouth, printing, postal systems, broadcasting, electronic communication, or through the testimony of observers and witnesses to events.</p>
                                 <div class="row  row-cols-2  row-cols-md-4">
@@ -112,19 +112,19 @@ const addingNewsCard = (arrayValue) => {
                                                 ${newsCard.author.name ? newsCard.author.name : "confidential"}
                                                 </p>
                                                 <p class="m-0">
-                                                <small class="text-muted">${newsCard.author.published_date}</small>
+                                                <small class="text-muted">${newsCard.author.published_date ? newsCard.author.published_date : "Confidential"}</small>
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col ">
                                         <div class=" d-flex justify-content-center mt-3">
-                                            <p><i class="fa-solid fa-eye"></i><span>1.5M</span>
+                                            <p class= "text-warning"><i class="fa-solid fa-eye"></i><span class="ms-2">${newsCard.total_view ? newsCard.total_view : "0"}</span>
                                             <p>
                                         </div>
                                     </div>
                                     <div class="col  mt-3">
-                                        <p>
+                                        <p class= "text-warning">
                                             <i class="fa-solid fa-star-half-stroke"></i>
                                             <i class="fa-regular fa-star"></i>
                                             <i class="fa-regular fa-star"></i>
@@ -133,7 +133,7 @@ const addingNewsCard = (arrayValue) => {
                                         </p>
                                     </div>
                                     <div class="col ms-auto d-flex justify-content-center mt-3">
-                                    <a  onclick="loadNewsDetails('${newsCard._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailModal"> <i class="fa-solid fa-arrow-right"></i></a>
+                                    <a class= "text-warning" onclick="loadNewsDetails('${newsCard._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailModal"> <i class="fa-solid fa-arrow-right"></i></a>
                                 </div>
                             </div>
     
@@ -180,5 +180,5 @@ const toggleSpinner = isloading => {
         loaderSection.classList.add('d-none')
     }
 }
-clickHandler(8);
+clickHandler(8, "All News");
 
