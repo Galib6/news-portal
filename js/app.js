@@ -4,14 +4,14 @@ const catagory = async () => {
     const res = await fetch(url);
     const catagoryListData = await res.json()
     const categoryes = catagoryListData.data.news_category
-    // console.log(categoryes)
+    console.log(categoryes)
     const categoryLi = document.getElementById("pills-tab");
     categoryes.forEach(categoryName => {
         // console.log(categoryName);
         const categoryList = document.createElement('li');
         categoryList.classList.add("nav-item");
         categoryList.innerHTML = `
-        <button onclick="clickHandler(${categoryName.category_id})" class="nav-link " id="pills-home-tab" data-bs-toggle="pill" type="button">${categoryName.category_name}</button>
+        <button onclick="clickHandler(${categoryName.category_id}, '${categoryName.category_name}')" class="nav-link " id="pills-home-tab" data-bs-toggle="pill" type="button">${categoryName.category_name}</button>
         `
         categoryLi.appendChild(categoryList)
 
@@ -22,7 +22,7 @@ const catagory = async () => {
 catagory();
 
 
-const clickHandler = async (categoryId) => {
+const clickHandler = async (categoryId, categoryName) => {
     toggleSpinner(true);
     const url = ` https://openapi.programming-hero.com/api/news/category/0${categoryId}`
     // console.log(url);
@@ -35,6 +35,11 @@ const clickHandler = async (categoryId) => {
     const itemFound = document.getElementById('items-found')
     // console.log(itemFound)
     itemFound.innerText = newsPortal.length;
+
+    const foundCategory = document.getElementById("found-category");
+    console.log(categoryName);
+    foundCategory.innerText = categoryName;
+
     console.log(newsPortal.length)
 
     const noNews = document.getElementById('no-found-messege')
@@ -49,7 +54,7 @@ const clickHandler = async (categoryId) => {
     array = [];
     newsPortal.forEach(news => {
         array.push(news);
-        console.log(array)
+        // console.log(array)
     })
 
 };
@@ -81,7 +86,7 @@ const addingNewsCard = (arrayValue) => {
     allNewsContainer.textContent = '';
 
     arrayValue.forEach(newsCard => {
-        console.log(newsCard)
+        // console.log(newsCard)
         const newsDiv = document.createElement("div");
         newsDiv.innerHTML = `
         
