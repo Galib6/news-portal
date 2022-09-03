@@ -94,7 +94,6 @@ const todayPickFilter = () => {
     const array1 = [];
     array.forEach(element => {
         const isTodaysPick = (element.others_info.is_todays_pick)
-
         if (isTodaysPick === true) {
             array1.push(element);
         }
@@ -104,6 +103,12 @@ const todayPickFilter = () => {
 
 
     })
+    try {
+        array1.push(element)
+    }
+    catch (err) {
+        console.log(err)
+    }
     // array.others_info.is_todays_pick
     console.log(array1)
     addingNewsCard(array1);
@@ -119,7 +124,12 @@ const todayTrendingFilter = () => {
         else {
             return
         }
-
+        try {
+            array1.push(element)
+        }
+        catch (err) {
+            console.log(err)
+        }
 
     })
     // array.others_info.is_todays_pick
