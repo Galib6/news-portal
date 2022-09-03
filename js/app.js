@@ -4,7 +4,7 @@ const catagory = async () => {
     const res = await fetch(url);
     const catagoryListData = await res.json()
     const categoryes = catagoryListData.data.news_category
-    console.log(categoryes)
+    // console.log(categoryes)
     const categoryLi = document.getElementById("pills-tab");
     categoryes.forEach(categoryName => {
         // console.log(categoryName);
@@ -28,19 +28,19 @@ const clickHandler = async (categoryId, categoryName) => {
     // console.log(url);
     const res = await fetch(url);
     const newsPortalData = await res.json();
-    console.log(newsPortalData)
+    // console.log(newsPortalData)
     const newsPortal = newsPortalData.data;
-    console.log(newsPortal);
+    // console.log(newsPortal);
 
     const itemFound = document.getElementById('items-found')
     // console.log(itemFound)
     itemFound.innerText = newsPortal.length;
 
     const foundCategory = document.getElementById("found-category");
-    console.log(categoryName);
+    // console.log(categoryName);
     foundCategory.innerText = categoryName;
 
-    console.log(newsPortal.length)
+    // console.log(newsPortal.length)
 
     const noNews = document.getElementById('no-found-messege')
     if (newsPortal.length === 0) {
@@ -88,9 +88,53 @@ const shotingcard = (value) => {
     addingNewsCard(array);
 }
 
+// Trending 
+
+const todayPickFilter = () => {
+    const array1 = [];
+    array.forEach(element => {
+        const isTodaysPick = (element.others_info.is_todays_pick)
+
+        if (isTodaysPick === true) {
+            array1.push(element);
+        }
+        else {
+            return
+        }
+
+
+    })
+    // array.others_info.is_todays_pick
+    console.log(array1)
+    addingNewsCard(array1);
+}
+const todayTrendingFilter = () => {
+    const array2 = [];
+    array.forEach(element => {
+        const isTrendingPick = (element.others_info.is_trending)
+        // console.log(isTrendingPick);
+        if (isTrendingPick === true) {
+            array2.push(element);
+        }
+        else {
+            return
+        }
+
+
+    })
+    // array.others_info.is_todays_pick
+    console.log(array2)
+    addingNewsCard(array2);
+}
+
+
+
 const addingNewsCard = (arrayValue) => {
     const allNewsContainer = document.getElementById('news-container')
     allNewsContainer.textContent = '';
+    const itemFound = document.getElementById('items-found')
+    // console.log(itemFound)
+    itemFound.innerText = arrayValue.length;
 
     arrayValue.forEach(newsCard => {
         // console.log(newsCard)
@@ -126,7 +170,7 @@ const addingNewsCard = (arrayValue) => {
                                     </div>
                                     <div class="col ">
                                         <div class=" d-flex justify-content-center mt-3">
-                                            <p class= "text-warning"><i class="fa-solid fa-eye"></i><span class="ms-2">${newsCard.total_view ? newsCard.total_view : "0"}</span>
+                                            <p class= "text-warning"><i class="fa-solid fa-eye"></i><span class="ms-2">${newsCard.total_view ? newsCard.total_view : "Not found"}</span>
                                             <p>
                                         </div>
                                     </div>
