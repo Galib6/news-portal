@@ -179,13 +179,13 @@ const addingNewsCard = (arrayValue) => {
                                         </div>
                                     </div>
                                     <div class="col ">
-                                        <div class=" d-flex justify-content-center mt-3">
+                                        <div class=" d-flex justify-content-center mt-3" style="font-size:20px;">
                                             <p class= "text-warning"><i class="fa-solid fa-eye"></i><span class="ms-2">${newsCard.total_view ? newsCard.total_view : "Not found"}</span>
                                             <p>
                                         </div>
                                     </div>
                                     <div class="col  mt-3">
-                                        <p class= "text-warning">
+                                        <p class= "text-warning" style="font-size:20px;">
                                             <i class="fa-solid fa-star-half-stroke"></i>
                                             <i class="fa-regular fa-star"></i>
                                             <i class="fa-regular fa-star"></i>
@@ -194,7 +194,7 @@ const addingNewsCard = (arrayValue) => {
                                         </p>
                                     </div>
                                     <div class="col ms-auto d-flex justify-content-center mt-3">
-                                    <a class= "text-warning" onclick="loadNewsDetails('${newsCard._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailModal"> <i class="fa-solid fa-arrow-right"></i></a>
+                                    <a class= "text-warning" style="font-size:20px;" onclick="loadNewsDetails('${newsCard._id}')" data-bs-toggle="modal" data-bs-target="#newsDetailModal"> <i class="fa-solid fa-arrow-right"></i></a>
                                 </div>
                             </div>
     
