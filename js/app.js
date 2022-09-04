@@ -1,9 +1,15 @@
 let array = [];
 const catagory = async () => {
     const url = "https://openapi.programming-hero.com/api/news/categories";
+    try {
+        const res = await fetich(url)
+    }
+    catch (error) {
+        console.log(error);
+    }
     const res = await fetch(url);
     const catagoryListData = await res.json()
-    const categoryes = catagoryListData.data.news_category
+    const categoryes = catagoryListData.data.news_category;
     // console.log(categoryes)
     const categoryLi = document.getElementById("pills-tab");
     categoryes.forEach(categoryName => {
